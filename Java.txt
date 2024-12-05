@@ -1,6 +1,8 @@
-============================= JVM ========================================== 
+----------------------------------- JVM ----------------------------------- 
 
-The Java Virtual Machine (JVM) is a key component of the Java runtime environment that allows Java programs to run on any device or operating system. Its main function is to execute bytecode, which is compiled from Java source code.
+    The Java Virtual Machine (JVM) is a key component of the Java runtime environment that allows 
+        Java programs to run on any device or operating system. Its main function is to execute bytecode, 
+        which is compiled from Java source code.
 
 Key Points about JVM:
     -> Platform Independence
@@ -9,9 +11,41 @@ Key Points about JVM:
     -> Components
     -> Security
 
-The Garbage Collector (GC):  in Java is responsible for automatically managing memory by reclaiming memory used by objects that are no longer needed, ensuring efficient memory usage and preventing memory leaks.
+----------------------------------------- Java 8 ------------------------------------
 
-================How Garbage Collection Works====================
+    Java 8 has lot of features
+
+    -> lambda expressions
+    -> stream API
+    -> default methods in interface
+    -> static methods in interface
+    -> method references
+    -> optional class
+    -> Date APIs
+    -> Functional Interface 
+        |
+        -> Runnable
+        -> Comparator
+        -> Callable
+        -> Predicate
+        -> Function
+        -> Consumer
+        -> Supplier
+
+----------------------------------------- GC -----------------------------------------
+
+The Garbage Collector (GC):  
+    
+    In Java is responsible for automatically managing memory by reclaiming memory used by objects 
+        that are no longer needed, ensuring efficient memory usage and preventing memory leaks.
+
+        there are 4 types of GC 
+            -> Serial Garbage Collector
+            -> Parallel Garbage Collector
+            -> CMS (Concurrent Mark-Sweep) Garbage Collector
+            -> G1 Garbage Collector
+
+How Garbage Collection Works:
 
     -> The GC runs in the background, identifying and removing unreachable objects—those that can no longer be accessed by the program.
     -> It works in several stages: marking (identifying objects that are no longer reachable), sweeping (removing them), and sometimes compacting (moving objects around to free up space).
@@ -25,12 +59,14 @@ When Data Becomes Eligible for Garbage Collection:
     -> The object is no longer referenced, even if it is still in use by other objects.
 
 When to Use Explicit Garbage Collection:
+    
     -> Explicit GC can be triggered using System.gc(), but it's generally discouraged because it can introduce      
         performance overhead.
     -> It is rarely needed since Java’s automatic GC is efficient. You might consider it in special cases where you 
         know a large amount of memory is no longer needed, and you want to force a cleanup.
 
-========================= What are Memory storages available with JVM ========================
+--------------------- What are Memory storages available with JVM --------------------
+
 JVM consists of a few memory storages
     -> Class(Method) Area
     -> Heap
@@ -38,94 +74,146 @@ JVM consists of a few memory storages
     -> Program Counter Register
     -> Native Method Stack
 
-=========================== classloader =============================
-
-Classloader is the part of JRE, during the execution of the bytecode or created .class file classloader is responsible for dynamically loading the java classes and interfaces to JVM. 
-Because of classloaders Java run time system does not need to know about files and file systems.
+    Heap memory  : Used for dynamic memory allocation. All objects are stored in the heap.
+    Stack memory : Used for method execution and storing local variables and function calls. The stack grows and shrinks with method calls.
 
 
-============================== String Pool =========================
+--------------------------------------------- OOPS -------------------------------------------
 
-A Java String Pool is a place in heap memory where all the strings defined in the program are stored. 
-A separate place in a stack is there where the variable storing the string is stored. 
-Whenever we create a new string object, JVM checks for the presence of the object in the String pool, If String is available in the pool, the same object reference is shared with the variable, else a new object is created
+OOPS :
 
-=================== What will happen if we declare don’t declare the main as static  ==============
+        Object-Oriented Programming (OOP) is a programming model that organizes software design around objects 
+    rather than functions. In Java, everything is modeled as an object, and objects are instances of classes. 
+    This approach helps structure code in a way that makes it easier to manage, reuse, and scale.
 
-We can declare the main method without using static and without getting any errors. But, the main method will not be treated as the entry point to the application or the program.
+    -> Inheritance
+    -> Polymorphism
+    -> Abstraction
+    -> Encapsulation
 
-====================== Why Packages are used =====================================
+Inheritance:
+    
+    Inheritance allows a new class (child class) to inherit the properties and methods from an 
+    existing class (parent class), which promotes code reuse and hierarchy
+    
+    -> Single Inheritance
+    -> Multilevel Inheritance
+    -> Multiple Inheritance (through interfaces)
+    -> Hierarchical Inheritance
+    -> Hybrid Inheritance (not directly supported in Java, but can be achieved using interfaces)
 
-Packages are used in Java in order to prevent naming conflicts, control access, and make searching/locating and usage of classes, interfaces, etc easier
-
-=============================== data types in Java ===============================
-
-There are 2 types of data types in Java as mentioned below:
-
-    -> Primitive Data Type
-    -> Non-Primitive Data Type or Object Data type
-
-=================== Pointer in Java ===================================================
-
-No, Java doesn’t provide the support of Pointer. As Java needed to be more secure because which feature of the pointer is not provided in Java
-
-===================================== Wrapper class in Java ==================================
-
-In Java, Wrapper classes are used to convert primitive data types into objects. Each primitive type (like int, char, boolean, etc.) has a corresponding Wrapper class that wraps the primitive value inside an object.
-
-    -> Wrappers allow primitives to be treated as objects, which is useful when working with collections (like ArrayList), which can only store objects.
- 
-============================  Differentiate between instance and local variables ==========================
-
-    ---- Instance Variable -----            |               Local Variable
-                                            |
-    Declared outside the method,            |   Declared within the method.    
-    directly invoked by the method.         |                              
-                                            |
-    Has a default value.                    |        No default value           
-                                            |
-    It can be used throughout the class.    |     The scope is limited to the method
+Encapsulation:
+    
+        This principle refers to bundling the data (variables) and the methods that manipulate the data within 
+    one unit (class). It also involves controlling access to the data by using access modifiers like 
+    private and public.
 
 
-======================  Class Variable | Static Variable ================================
+Polymorphism:
 
-In Java, a class variable  is a variable that is declared within a class but outside of any method, constructor, or block. Class variables are declared with the static keyword
+    Polymorphism means that objects can take many forms. It allows methods to behave differently based on 
+    the object calling them. This is achieved through method overriding (runtime) and 
+    method overloading (compile-time).
 
-================================= default value stored in Local Variables ===============================
+Method OverLoading:
 
-    There is no default value stored with local variables. Also, primitive variables and objects don’t have any default values.
+        Method Overloading allows different methods to have the same name, but different signatures 
+    where the signature can differ by the number of input parameters or type of input parameters, or a mixture of both.
 
-============================= instance variable and a class variable ===================================
+    Method overloading in Java is also known as Compile-time Polymorphism, Static Polymorphism, or Early binding.
 
-Instance Variable: A class variable without a static modifier known as an instance variable is typically shared by  
-    all instances of the class. These variables can have distinct values among several objects. The contents of an instance variable are completely independent of one object instance from another because they are related to a specific object instance of the class.
+Method OverRiding:
 
-Class Variable:  Class Variable variable can be declared anywhere at the class level using the keyword static. 
-    These variables can only have one value when applied to various objects. These variables can be shared by all class members since they are not connected to any specific object of the class.
+    Method overriding is a method to achieve Run-time polymorphism in Java. 
+    Method overriding is a feature that allows a child class to provide a specific implementation of a method 
+    that is already provided by one of its parent classes. When a method in a child class has the same name, 
+    the same parameters or signature, and the same return type(or sub-type) as a method in its parent class, 
+    then the method in the subclass is said to override the method in the superclass.
+
+Virtual Functions:
+
+    In Java, all non-static methods are inherently virtual, meaning they are bound at runtime rather than compile time.
+
+Abstraction: ( Pure Virtual Functions )
+    
+    Abstraction involves hiding the complex implementation details and showing only the necessary functionality. 
+    This can be done using abstract classes and interfaces.
+
+Interface:
+
+        Interfaces are a fundamental concept in Object-Oriented Programming (OOP). They are used to define a contract 
+    that classes can implement. An interface specifies a set of methods that a class must implement, 
+    but it doesn't provide the implementation itself.
+
+    -> Abstract Methods
+    -> Default Methods
+    -> Static Methods
+    -> Constant Variables
+
+Features of the Interface are mentioned below:
+
+    -> The interface can help to achieve total abstraction.
+    -> Allows us to use multiple inheritances in Java.
+    -> Any class can implement multiple interfaces even when one class can extend only one class.
+    -> It is also used to achieve loose coupling.
+    
+Why use Interfaces:
+
+    -> Decoupling: 
+        Interfaces allow for loose coupling between the components of a program. You can change the implementation of a method without changing the interface.
+
+    -> Multiple Inheritance: 
+        A class can implement multiple interfaces, allowing it to inherit behaviors from multiple sources, which would otherwise be impossible with classes alone.
+
+    -> Code Flexibility and Reusability: 
+        Interfaces define a common set of methods that can be used across different classes, enhancing code reusability. Different classes can implement the same interface, leading to flexible designs.
+
+    -> Abstraction: 
+        Interfaces provide a way to achieve abstraction, as they allow the definition of the "what" (methods) but not the "how" (implementation), leaving the details to the implementing class.
 
 
-=================== static variable ==============================================================
+Interface vs Abstract Class:
 
-The static keyword is used to share the same variable or method of a given class. Static variables are the variables that once declared then a single copy of the variable is created and shared among all objects at the class level
+    Abstract Class: 
+        Can have both abstract methods and concrete methods (methods with a body). 
+        It can also have fields and constructors.
+    
+    Interface: 
+        Cannot have concrete methods (except default and static methods in Java 8 and above), 
+        no constructors, and only constants and abstract methods.
 
-================================ How many ways you can take input from the console ==========================
+When to Use an Interface vs an Abstract Class:
+    
+        Use an interface when you want to define a contract for what a class can do, but not how it does it. 
+    Interfaces are also suitable when multiple classes can implement the same interface.
 
-There are two methods to take input from the console in Java mentioned below:
+        Use an abstract class when you want to provide some common functionality to a set of classes, 
+    but also want to enforce certain methods to be implemented by subclasses.
 
-    -> Using Command line argument
-    -> Using Buffered Reader Class
-    -> Using Console Class
-    -> Using Scanner Class
 
-======================= What is covariant return type =======================
+Functional Interface:
 
-Covariant return type refers to a feature in Java where a method in a subclass can override a method in the parent class and return a type that is a subtype of the return type in the parent class. This allows more specific return types in the subclass while maintaining the method signature compatibility.
+    A functional interface is an interface that has only one abstract method. 
+    Functional interfaces are the foundation of lambda expressions in Java. 
+    These interfaces can have multiple default or static methods, but they can only have one abstract method.
 
-====================== transient keyword =========================================
+Marker Interface:
 
-The transient keyword is used at the time of serialization if we don’t want to save the value of a particular variable in a file. When JVM comes across a transient keyword, it ignores the original value of the variable and saves the default value of that variable data type.
+    An Interface is recognized as an empty interface (no field or methods) it is called a marker interface. 
+    
+    -> Serializable 
+    -> Cloneable 
+    -> Remote interfaces. 
 
-================================== String and StringBuffer and StringBuilder ==================================
+
+-------------------------------------- STRING -------------------------------
+
+String Pool:
+
+        A Java String Pool is a place in heap memory where all the strings defined in the program are stored. 
+    A separate place in a stack is there where the variable storing the string is stored. 
+    Whenever we create a new string object, JVM checks for the presence of the object in the String pool, If String is available in the pool, the same object reference is shared with the variable, else a new object is created
+
 
 String
     -> Store of a sequence of characters.
@@ -142,52 +230,266 @@ StringBuilder
     -> It is not thread-safe (two threads can call the methods concurrently)
     -> Being non-synchronized, implementation is faster
 
-================================ Why is StringBuffer called mutable ============================= 
+Why is StringBuffer called mutable 
 
-StringBuffer class in Java is used to represent a changeable string of characters. It offers an alternative to the immutable String class 
-    by enabling you to change a string’s contents without constantly creating new objects. Mutable (modifiable) strings are created with the help of the StringBuffer class. The StringBuffer class in Java is identical to the String class except that it is changeable.
-
-
-======================== On which memory arrays are created in Java ============================== 
-
-Arrays in Java are created in heap memory. When an array is created with the help of a new keyword, memory is allocated in the heap to store the elements of the array.
+        StringBuffer class in Java is used to represent a changeable string of characters. 
+        It offers an alternative to the immutable String class by enabling you to 
+        change a string’s contents without constantly creating new objects. Mutable (modifiable) 
+        strings are created with the help of the StringBuffer class. 
+        The StringBuffer class in Java is identical to the String class except that it is changeable.
 
 
-=============================== How to copy an array in Java ==================================
+------------------------------------- WRAPPER CLASS ---------------------------
 
-    -> clone() method in Java
-    -> arraycopy() method
-    -> copyOf() method
-    -> copyOfRange() method
+Wrapper Class:
 
-======================================== Is it possible to make an array volatile =====================================
+        In Java, Wrapper classes are used to convert primitive data types into objects. 
+    Each primitive type (like int, char, boolean, etc.) has a corresponding Wrapper class that wraps the primitive value inside an object.
 
-In Java, it is not possible to make a volatile. Volatile keywords in Java can only be applied to individual variables but not to arrays or collections. The value of the Variable is always read from and written to the main memory when it is defined as volatile rather than being cached in a thread’s local memory. This makes it easier to make sure that all threads that access the variable can see changes made to it.
+    -> Wrappers allow primitives to be treated as objects, which is useful when working with collections (like ArrayList), which can only store objects.
 
-================================= OOPs ===========================
+    It has 2 types
+    -> boxing    --- converting variables into objects
+    -> unboxing  --- converting objects into variables
 
-The main concepts of OOPs in Java are mentioned below:
+----------------------------------- classloader -------------------------
+ClassLoader:
 
-    -> Inheritance
-    -> Polymorphism
-    -> Abstraction
-    -> Encapsulation
+        Classloader is the part of JRE, during the execution of the bytecode or created .class file, 
+    classloader is responsible for dynamically loading the java classes and interfaces to JVM. 
+    
+    Because of classloaders Java run time system does not need to know about files and file systems.
 
-============================= this keyword ================================
+    There are 3 types of classloaders:
 
-‘this’ is a keyword used to reference a variable that refers to the current object.
+    -> Bootstrap Class Loader: Loads core Java classes (e.g., java.lang.*).
+    -> Extension Class Loader: Loads classes from the JDK extensions directory.
+    -> System Class Loader:    Loads classes from the classpath.
 
 
-================================ Access Specifiers ================================
+----------------------------------- STATIC --------------------------------
 
-Access Specifiers in Java help to restrict the scope of a class, constructor, variable, method, or data member. There are four types of Access Specifiers in Java mentioned below:
+        The static keyword is used to indicate that a particular field, method, or block belongs to the class itself, 
+    rather than to instances (objects) of that class. This means that the static member is shared among all 
+    instances of the class, and it can be accessed directly using the class name, 
+    without needing to create an object.
+
+    -> static variables
+    -> static methods
+    -> static blocks
+    -> static classes (nested classes)
+
+
+    Static members belong to the class and are shared across all instances of the class.
+    
+    Non-static members belong to an instance of the class, and each object has its own copy of these members.
+
+    No, as static methods are part of the class rather than the object so we can’t override them
+
+
+-------------------------- main method without static keyword  ----------------------
+
+Main without static:
+
+    We can declare the main method without using static and without getting any errors. 
+    But, the main method will not be treated as the entry point to the application or the program.
+
+------------------------- Why Packages are used -------------------------------
+
+Packages are used in Java in order to prevent naming conflicts, control access, and make searching/locating and usage of classes, interfaces, etc easier
+
+
+----------------------------------- Data Types --------------------------------
+Data Types:
+    
+    There are 2 types of data types in Java as mentioned below:
+
+    -> Primitive Data Type
+    -> Non-Primitive Data Type or Object Data type 
+
+-------------------------------------- Access Modifiers ----------------
+
+Access Specifiers:
+    
+    Access Specifiers in Java help to restrict the scope of a class, constructor, variable, method, or data member. 
+
+    There are 4 types of Access Specifiers in Java mentioned below:
 
     -> Public
     -> Private
     -> Protected
     -> Default
 
-========================== different ways to create objects ========================
+
+---------------- Pointer in Java -------------------------------------------
+
+No, Java doesn’t provide the support of Pointer. As Java needed to be more secure because which feature of the pointer is not provided in Java
+
+ 
+---------------------------  instance and local variables ----------------------
+
+    ---- Instance Variable -----            |               Local Variable
+                                            |
+    Declared outside the method,            |   Declared within the method.    
+    directly invoked by the method.         |                              
+                                            |
+    Has a default value.                    |        No default value           
+                                            |
+    It can be used throughout the class.    |     The scope is limited to the method
+
+-------------------------------- Variables ---------------------------
+
+    Local Variables: 
+        Declared inside a method or block, they are used temporarily and are destroyed once the method execution ends.
+
+    Instance Variables: 
+        Declared inside a class but outside any method, they are associated with an object of the class.
+    
+    Static Variables: 
+        Declared with the static keyword, they belong to the class rather than to any specific instance of the class.
+
+Class Variables:
+
+    In Java, a class variable  is a variable that is declared within a class but outside of any method, constructor, or block. 
+
+Static variables:
+    
+    Class variables are declared with the static keyword
+
+Default value stored in local variables:
+
+    There is no default value stored with local variables. Also, primitive variables and objects don’t have any default values.
+
+
+Instance Variable: A class variable without a static modifier known as an instance variable is typically shared by  
+    all instances of the class. These variables can have distinct values among several objects. The contents of an instance variable are completely independent of one object instance from another because they are related to a specific object instance of the class.
+
+Class Variable:  Class Variable variable can be declared anywhere at the class level using the keyword static. 
+    These variables can only have one value when applied to various objects. These variables can be shared by all class members since they are not connected to any specific object of the class.
+
+
+
+--------------------------- How many ways you can take input from the console ----------------------
+
+There are two methods to take input from the console in Java mentioned below:
+
+    -> Using Command line argument
+    -> Using Buffered Reader Class
+    -> Using Console Class
+    -> Using Scanner Class
+
+-------------------- What is covariant return type --------------------
+
+Covariant Return type:
+
+    Covariant return type refers to a feature in Java where a method in a subclass can 
+    override a method in the parent class and return a type that is a subtype of the return type in the parent class. 
+    This allows more specific return types in the subclass while maintaining the method signature compatibility.
+
+------------------------------ transient  -----------------------------------
+Trasient Keyword:
+
+    -> Transient is used when we do not want the variable to be serialised.
+    -> Transient provides flexibility and control over the attributes of objects from being serialized.
+    -> Transient variables are initialized with default value corresponding to the data type at the time of deserialization.
+    -> Transient variables cant be used along with static keywords because the static variables are class-level variables and 
+        not related to the individual instances. This matters during serialization.
+    -> It is not recommended to use final with transient variables as it would cause problems for re-initializing the variables 
+        once the values are populated by default at the time of deserialization.
+
+Volatile Variable:,
+
+    The volatile keyword in Java is used to mark a variable as being shared between multiple threads. 
+    Its main purpose is to ensure that any changes to the variable made by one thread are immediately visible to other threads.
+
+    When a variable is declared as volatile, it tells the Java Virtual Machine (JVM) and the compiler to:
+
+    Prevent caching: 
+        The value of the volatile variable is always fetched from the main memory rather than from the CPU cache.
+
+    Ensure synchronization: 
+        Changes to the volatile variable are visible to all threads immediately, ensuring that threads read the most up-to-date value.
+
+    -> The volatile keyword against the variable indicates that the content of the variable is 
+        stored in the main memory and every read of the variable should be done from the main 
+        memory and not the CPU cache and every write should be written to the main memory 
+        and not just to the CPU cache.
+    -> Volatile ensures that the JVM does not re-order the variables and ensures that the synchronization issues are avoided.
+    -> Volatile variables do not have any default values.
+    -> Volatile variables can be used along with the static keyword.
+    -> Volatile variables can be used along with the final keyword.
+
+-------------------- On which memory arrays are created in Java ------------------------- 
+
+Arrays in Java are created in heap memory. When an array is created with the help of a new keyword, memory is allocated in the heap to store the elements of the array.
+
+
+-------------------------- How to copy an array in Java -----------------------------
+
+    -> clone() method in Java
+    -> arraycopy() method
+    -> copyOf() method
+    -> copyOfRange() method
+
+---------------------------------- Is it possible to make an array volatile -------------------------------
+
+        In Java, it is not possible to make a volatile. Volatile keywords in Java can only be applied to individual variables 
+    but not to arrays or collections. The value of the Variable is always read from and written 
+    to the main memory when it is defined as volatile rather than being cached in a thread’s local memory. 
+    This makes it easier to make sure that all threads that access the variable can see changes made to it.
+
+
+------------------------- this keyword ---------------------------
+
+This :
+    The this keyword in Java is used to refer to the current instance of the class. 
+    It is primarily used within an instance method or constructor to refer to the current object.
+
+Super:
+    The super keyword in Java is used to refer to the parent class or superclass of the current class.
+
+------------------------------------ Final --------------------------
+
+What is the use of the final keyword:
+
+Explanation:
+    -> Final variable --- A constant, its value cannot be changed after initialization.
+    -> Final method   --- Prevents method overriding in subclasses.
+    -> Final class    --- Prevents inheritance (i.e., no class can extend a final class).
+
+
+----------------------------------- == | .equals() ------------------------
+== and equals() in Java
+Explanation:
+    == compares references (memory addresses) of objects, not their actual content.
+    .equals() compares the actual contents or values of objects (if overridden in the class).
+
+------------------------------------ Exception Handling --------------------
+
+Exception handling:
+
+        Exception handling is a mechanism in Java that allows you to handle runtime errors (exceptions) 
+    gracefully without terminating the program. It uses try, catch, finally, and throw keywords.
+
+    there are two types of excetpions:
+        -> checked exceptions   -- compiletime
+        -> unchecked exception  -- runtime 
+    
+    Checked exceptions: 
+        These are exceptions that must be either caught or declared in the method signature (e.g., IOException).
+
+    Unchecked exceptions: 
+        These are exceptions that are not required to be caught or declared, typically extending RuntimeException (e.g., NullPointerException).
+
+---------------------------------- Throw | throws -------------------
+
+throw and throws:
+
+    -> throw is used to explicitly throw an exception from a method or block.
+    -> throws is used in a method declaration to specify which exceptions the method might throw, allowing the caller to handle them.
+
+
+---------------------- different ways to create objects --------------------
 
 there are 5 Methods to create objects in Java are mentioned below:
 
@@ -197,95 +499,110 @@ there are 5 Methods to create objects in Java are mentioned below:
     -> Using deserialization
     -> Using the newInstance() method of the Constructor class
 
-=============================================== constructor =================================================
+---------------------------------------- constructor -----------------------------------------
 
-Constructor is a special method that is used to initialize objects. Constructor is called when a object is created. The name of constructor is same as of the class.
+    Constructor is a special method that is used to initialize objects. Constructor is called when a object is created. The name of constructor is same as of the class.
 
-=========================== types of constructors ==================================
-
-There are two types of constructors in Java as mentioned below:
+    There are 2 types of constructors in Java as mentioned below:
 
     -> Default Constructor
     -> Parameterized Constructor
 
-=========================================== copy constructor ===============================================
+Copy Constructor:
 
-The copy constructor is the type of constructor in which we pass another object as a parameter because which properties of both objects seem the same, that is why it seems as if constructors create a copy of an object.
+    The copy constructor is the type of constructor in which we pass another object as a parameter 
+    because which properties of both objects seem the same, 
+    that is why it seems as if constructors create a copy of an object.
 
-================================== private constructor =================================
+private constructor:
 
-A private constructor is used if you don’t want any other class to instantiate the object to avoid subclassing. 
+    A private constructor is used if you don’t want any other class to instantiate the object to avoid subclassing. 
 
-=====================================  What is an Interface ================================
+Constructor Overloading:
 
-An interface in Java is a collection of static final variables and abstract methods that define the contract or agreement for a set of linked classes. Any class that implements an interface is required to implement a specific set of methods. It specifies the behavior that a class must exhibit but not the specifics of how it should be implemented.
+    You can have multiple constructors in the same class with different parameter lists (constructor overloading).
 
-Features of the Interface are mentioned below:
+Constructor Chaining:
+    
+    Constructor chaining occurs when one constructor calls another constructor in the same class or superclass.
 
-    -> The interface can help to achieve total abstraction.
-    -> Allows us to use multiple inheritances in Java.
-    -> Any class can implement multiple interfaces even when one class can extend only one class.
-    -> It is also used to achieve loose coupling.
-
-================================================= marker interface ===============================
-
-An Interface is recognized as an empty interface (no field or methods) it is called a marker interface. Examples of marker interfaces are Serializable, Cloneable, and Remote interfaces. 
-
-========================== differences between abstract class and interface ============================
-
-Abstract Class: Used to represent common characteristics of related classes. It can have both abstract (without implementation 
-                and non-abstract methods (with implementation).
-
-Interface: Used to define a contract for classes to follow, i.e., a set of abstract methods that implementing classes must provide. Prior 
-            to Java 8, interfaces could only have abstract methods, but now they can have default and static methods too.
-
-================================= Can the constructor be inherited ==========================
-
-No, we can’t inherit a constructor.
-
-=================================== method overriding ==============================
-
-Method overriding is a method to achieve Run-time polymorphism in Java. Method overriding is a feature that allows a child class to provide a specific implementation of a method that is already provided by one of its parent classes. When a method in a child class has the same name, the same parameters or signature, and the same return type(or sub-type) as a method in its parent class, then the method in the subclass is said to override the method in the superclass.
-
-================================= method overloading ================================
-
-In Java, Method Overloading allows different methods to have the same name, but different signatures where the signature can differ by the number of input parameters or type of input parameters, or a mixture of both.
-
-Method overloading in Java is also known as Compile-time Polymorphism, Static Polymorphism, or Early binding. 
-
-====================================  Can we override the static method ==================================
-
-No, as static methods are part of the class rather than the object so we can’t override them
  
-================================ Can we override the overloaded method ===========================
+--------------------------- Can we override the overloaded method -----------------------
 
 Yes, since the overloaded method is a completely different method in the eyes of the compiler. Overriding isn’t the same thing at all. The decision as to which method to call is deferred to runtime.
 
-===============================  overload the main() method ====================================
+--------------------------  overload the main() method ------------------------------
 
 Yes in Java we can overload the main method to call the main method with the help of its predefined calling method.
 
-================================= Can we override the private methods ================================
+---------------------------- Can we override the private methods ---------------------------
 
-It is not possible to override the private methods in Java. Method overriding is where the method in the subclass is implemented instead of the method from the parent class. The private methods are accessible only within the class in which it is declared. Since this method is not visible to other classes and cannot be accessed, it cannot be overridden. 
+        It is not possible to override the private methods in Java. Method overriding is where the method in the subclass is implemented 
+    instead of the method from the parent class. The private methods are accessible only within the class in which it is declared. 
+    Since this method is not visible to other classes and cannot be accessed, it cannot be overridden. 
 
-=============================== virtual functions in Java ====================================
+-------------------------- virtual functions in Java ------------------------------
 
 Yes, Java supports virtual functions. Functions are by default virtual and can be made non-virtual using the final keyword.
 
-======================================= Abstraction ====================================
+------------------------------------------ finalize() -----------------------
 
-Abstraction refers to the act of representing essential features without including background details. The detailed information or the implementation is hidden. The most common example of abstraction is a car, we know how to turn on the engine, accelerate and move, however, the way engine works, and its internal components are complex logic hidden from the general users. This is usually done to handle the complexity.
+What is finalize() method in Java
+     The finalize() method is called by the garbage collector just before an object is reclaimed. 
+     It allows an object to perform cleanup activities (like releasing resources) before being removed from memory.
 
-======================================= Abstract class? =============================
 
-A class declared as abstract, cannot be instantiated i.e., the object cannot be created. It may or may not contain abstract methods but if a class has at least one abstract method, it must be declared abstract.
 
-==============================  When Abstract methods are used =============================
+---------------------------------- serialization ------------------------
 
-An abstract method is used when we want to use a method but want to child classes to decide the implementation in that case we use Abstract methods with the parent classes.
+        Serialization in Java is the process of converting an object's state into a byte stream, 
+    allowing it to be stored in a file, sent over a network, or saved in a database. 
+    The object can later be deserialized, i.e., reconstructed from the byte stream, 
+    restoring the original object state. This is essential for persistence and communication between different components in a distributed system.
 
-=============================  Explain various interfaces used in the Collection framework ==============================
+
+Why is Serialization used?
+    
+    -> Persistence:    To save objects to a file or database so that they can be retrieved later.
+    -> Communication:  To send objects over a network (e.g., in a client-server application).
+    -> Caching:        For storing objects in memory and retrieving them when needed.
+
+
+
+-------------------------------------- Sync -----------------------
+
+What is synchronized in Java?
+
+    The synchronized keyword ensures that only one thread can access a method or block of code at a time, 
+    making it thread-safe. It is useful for preventing data inconsistency in multithreaded programs.
+
+------------------------------ final | finally | finalize -------------------
+
+final, finally, and finalize() in Java?
+    
+    -> final:       Used to declare constants, prevent method overriding, and prevent inheritance.
+    -> finally:     A block of code that will always be executed after a try-catch block, regardless of exceptions.
+    -> finalize():  A method called by the garbage collector before an object is destroyed.
+
+
+------------------------------------- Generics ------------------------- 
+
+    Generics:   
+        Allow classes, interfaces, and methods to operate on objects of various types while providing compile-time type safety.
+
+    Example: List<String> list - new ArrayList<>(); 
+    ensures the list can only store String objects.
+
+
+----------------------------------- immutable objects ----------------------
+
+       An immutable object is an object whose state cannot be modified after it is created. 
+        Examples include the String class in Java.
+    
+    To make a class immutable, all fields should be final, and there should be no setter methods.
+
+
+-------------------------  Explain various interfaces used in the Collection framework -------------------------
 
 Collection framework implements
 
@@ -296,18 +613,102 @@ Collection framework implements
     -> Deque Interface
     -> Map Interface
 
-=================================== How can you synchronize an ArrayList in Java =======================================
+
+-------------------------------------------- Dependency Injection ----------------------
+
+Dependency Injection:
+        
+        Dependency Injection (DI) is a design pattern used in object-oriented programming to achieve Inversion of Control (IoC) 
+    between classes and their dependencies. Instead of a class creating its own dependencies, they are provided (injected) externally. 
+    This pattern helps decouple the components of a system, making them easier to test, maintain, and scale.
+
+    There are 3 types of Dependency injections
+    -> Constructor Injection
+    -> Setter Injection
+    -> Interface Injection
+
+Advantages of Dependency Injection:
+    
+    -> Loose Coupling
+    -> Testability
+    -> Separation of Concerns
+    -> Flexibility
+    -> Scalability
+
+Circular Dependency:
+
+        Circular Dependency occurs when two or more components (or classes) depend on each other 
+    directly or indirectly. This means that Class A requires Class B, and Class B also requires Class A. 
+    As a result, the system cannot instantiate these classes because each one is waiting for the other to be created first, 
+    leading to a deadlock-like scenario.
+
+
+---------------------------------- Fail Fast & Fail Safe ----------------------------------
+
+Fail Fast:
+
+    Fail-fast is commonly used in iterators and collections. 
+    For example, 
+        if a collection is modified while it is being iterated over, the iterator will throw a ConcurrentModificationException, 
+        indicating that something went wrong.
+
+Fail Safe:
+
+    Fail-safe behavior is typically seen in certain concurrent collections such as CopyOnWriteArrayList, 
+    which allows modifications while iterating over it without throwing exceptions. 
+    This is in contrast to fail-fast collections like ArrayList.
+
+--------------------------------------------------------------------------------------------
+
+HashMap:
+        
+        HashMap is one of the most commonly used data structures in Java to store data in key-value pairs. 
+    It implements the Map interface and is part of the java.util package. A key feature of HashMap is its fast access time (O(1) on average) 
+    for operations such as get(), put(), remove(), and containsKey().
+
+Key Features of HashMap:
+
+    -> Key-Value Pairs
+    -> Allows Null
+    -> Unordered
+    -> Not Synchronized
+    -> Performance
+
+        When a key is added to the HashMap, the hash code of the key is calculated using the hashCode() method. 
+    This hash code is an integer value that uniquely represents the key. 
+    This value is then used to determine the bucket index (location) where the key-value pair will be stored.
+
+    -> hashCode(): 
+        The hashCode() method is used to calculate a hash value for the key. 
+        It produces an integer that is spread across the available buckets.
+    -> Bucket: 
+        The bucket is the storage location where the entries (key-value pairs) are stored.
+
+    
+    -> Internally, HashMap uses an array of buckets (called Entry array).
+    -> Each bucket is a linked list .
+    -> Initially, the array has a default size of 16 buckets. When the size exceeds the load factor, it resizes itself (re-hashes).
+
+    A collision occurs when two keys have the same hash code and thus map to the same bucket. 
+    HashMap handles collisions using one of the following strategies:
+
+
+-------------------------------------- ArrayList | LinkedList --------------------------
+
+--------------------------------------- Set -----------------------------------
+
+------------------------------ How can you synchronize an ArrayList in Java ---------------------------------
 
 An ArrayList can be synchronized using two methods mentioned below:
 
     -> Using Collections.synchronizedList()
     -> Using CopyOnWriteArrayList
 
-================================== ArrayList grow dynamically ======================================
+----------------------------- ArrayList grow dynamically --------------------------------
 
 Due to ArrayLists array-based nature, it grows dynamically in size ensuring that there is always enough room for elements. When an ArrayList element is first created, the default capacity is around 10-16 elements which basically depends on the Java version. ArrayList elements are copied over from the original array to the new array when the capacity of the original array is full. As the ArrayList size increases dynamically, the class creates a new array of bigger sizes and it copies all the elements from the old array to the new array. Now, the reference of the new array is used internally. This process of dynamically growing an array is known as resizing. 
 
-==================================================  What is a Vector ==============================================
+------------------------------------------  What is a Vector ---------------------------------------
 
 Vectors in Java are similar and can store multiple elements inside them. Vectors follow certain rules mentioned below:
 
@@ -318,11 +719,35 @@ Vectors in Java are similar and can store multiple elements inside them. Vectors
     -> Vectors are synchronized in nature means they only used a single thread ( only one process is performed at a particular time ).
     -> The vector contains many methods that are not part of the collections framework.
 
-=================================================== ArrayList Read-Only ====================================
+------------------------------------------- ArrayList Read-Only ------------------------------
 
 An ArrayList can be made ready only using the method provided by Collections using the Collections.unmodifiableList() method. 
 
-array_readonly = Collections.unmodifiableList(ArrayList);
+array_readonly - Collections.unmodifiableList(ArrayList);
 
 
 
+================================================================================
+================================================================================
+                            Deep Dive Questions
+Java Reflection:
+
+    Java Reflection allows you to inspect and modify classes, methods, and fields at runtime. 
+    It’s useful for scenarios like building frameworks or tools where classes may not be known until runtime (e.g., dependency injection, ORMs).
+
+---------------------------------------------------------------------------------
+
+Design Patterns:
+
+    -> Singleton Pattern:   Ensures a class has only one instance.
+    -> Factory Pattern:     Provides a way to create objects without specifying the exact class of object that will be created.
+    -> Observer Pattern:    Allows a subject to notify multiple observers about changes.
+    -> Decorator Pattern:   Allows behavior to be added to an object dynamically.
+
+------------------------------------------------------------------------------
+volatile and synchronized:
+
+        volatile ensures that the value of a variable is updated consistently across threads, 
+    but it does not ensure atomicity. It’s primarily used for variables that are accessed by multiple threads.
+
+    synchronized provides mutual exclusion and ensures that only one thread can access a block of code or method at a time.
