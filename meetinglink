@@ -1,1 +1,9 @@
-https://tk.notifications.epam.com/track-e?e=laS7GNyXpEbD9ESbKYqXx3nxaL%2fzyTnihh3gEyzs47nB54ENAmZLi94bhjFVzVxfmm1%2bVUhbiOYYwzjKjnVSnLMfuLvN6nCgrsWS6D8ynqAHhcNadD%2f2lR8OsWioVnOjrnPwKUaMsRQM9yqX5T61YAv11ehekgtkYhvRqrCjraT9rIwjBLqmkoIFiFeNsaveYchkaZ7MYjpcHVRp6lV7%2baKvrlYquQEMAQN3aI197g4K0IBWDqF%2blB8XGzkOW4eM81RygcGT4fm2LidstGdBx150Djgq171TYEMf%2b5DWTHmbjheyhYG1y2FBCEswkA5UVnlhrz7HXvtYFfk7uNIaOVcnufiv3ClgF1VRRoIaqtTc38X2AP4UWabGU8zuKFQi
+java -jar build/libs/realignment-0.0.1-SNAPSHOT.jar \
+  process cusip-fail-cover \
+  --process_instance=actual-brexit-fid \
+  --business.date.offset=0 \
+  --generate.cash.report=true \
+  --config.yaml=classpath:ms/safe2/core/autorealignment/brexit_fid_realignment_job_config.yaml
+
+
+----------------
